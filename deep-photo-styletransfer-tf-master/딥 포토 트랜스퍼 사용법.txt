@@ -1,0 +1,51 @@
+https://drive.google.com/file/d/0BxvKyd83BJjYY01PYi1XQjB5R0E/view
+
+얼굴 바꿔주기 - stylegan이랑 결과 비슷??
+
+에서 vgg19.npy 다운받고 vgg19 파일에 붙여넣기 
+
+?? True 로 만들기 
+
+pytorch 1.4.0
+
+
+python deep_photostyle.py --checkpoint-dir ./checkpoint --content_image_path ./taeuk_input/iu_original.png --style_image_path ./taeuk_target/lsa.png --content_seg_path ./examples/segmentation/iu_last.png --style_seg_path ./examples/segmentation/tar0_7_2.png --style_option 2
+
+--content_weight 의 default값을 낮게 주고 (1e2)
+--style_weight 의 default값을 높게 주고 했는데(5e0)
+많은 변화가 없었다.
+
+=> content_wieght 값을 더 높게 줘야하나..
+
+--content_weight 의 default값을 더높게 주고 기본값5e0 => (10e0)
+--style_weight 의 default값을 높게 주고 했는데(5e0)
+
+=> style_wieght값을 더 적게해줘야하는거 같다. 안바뀐다! 
+
+--content_weight 의 default값을 더높게 주고 (10e0)
+--style_weight 의 default값을 그대로 주고 했는데(1e2)
+=> style_weight 값을 더 적게 해줘야 하는게 맞다.
+ 다음엔 더 적게 해보기 
+ 마지막엔 다시 아이유로..
+
+--content_weight 의 default값을 더높게 주고 (10e0)
+--style_weight 의 default값을 그대로 주고(1e2)
+--tv_weight 의 default값을 default=1e-3 -> 5e-1으로 주면?
+ ... 색이 이상해진다 ㅠ 다시 원래대로 
+
+ "--learning_rate"
+ 값을 1.0이었는데 5.0으로 바꾸면??
+ 음.. 더좋아졌나
+ 눈이 제대로나오긴하는데 
+ 색깔조정을 해줘서그런걸수도?
+ "--learning_rate"
+ 다시 1.0으로 하자 
+ ** 5.0으로 했을때 눈색깔이제대로 나온다 
+
+ 
+"--learning_rate" 3.0으로하고 segmentation을 눈썹을 넣어줘서
+눈을 키울수 있지 않을까 하고 해보았다.
+안좋았다.
+
+
+
